@@ -20,7 +20,7 @@ format:
 
 lint: format
 	@echo "Running flake8"
-	poetry run flake8 {{cookiecutter.service_name}}/* cdk/* tests/*
+	poetry run flake8 cdk/* tests/*
 	@echo "Running mypy"
 	$(MAKE) mypy-lint
 
@@ -34,17 +34,15 @@ pre-commit:
 	poetry run pre-commit run -a --show-diff-on-failure
 
 mypy-lint:
-	poetry run mypy --pretty {{cookiecutter.service_name}} cdk tests
+	poetry run mypy --pretty cdk tests
 
 deps:
 	poetry export --only=dev --format=requirements.txt > dev_requirements.txt
-	poetry export --without=dev --format=requirements.txt > lambda_requirements.txt
 
 unit:
 	poetry run pytest tests/unit  --cov-config=.coveragerc --cov={{cookiecutter.service_name}} --cov-report xml
 
 build: deps
-	mkdir -p .build/lambdas ; cp -r {{cookiecutter.service_name}} .build/lambdas
 	mkdir -p .build/common_layer ; poetry export --without=dev --format=requirements.txt > .build/common_layer/requirements.txt
 
 infra-tests: build

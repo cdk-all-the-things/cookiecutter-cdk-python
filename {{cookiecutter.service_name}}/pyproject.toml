@@ -8,7 +8,7 @@ classifiers=[
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
-    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: {{cookiecutter.python_version}}",
 ]
 repository="http://www.github.com/{{cookiecutter.git_repo_url}}"
 readme = "README.md"
@@ -16,7 +16,7 @@ keywords = ["{{cookiecutter.service_name}}"]
 license = "MIT-0"
 
 [tool.poetry.dependencies]
-python = "^3.12.0"
+python = "^{{cookiecutter.git_repo_url}}"
 pydantic = {version = "^2.0.3"}
 email-validator = {version = "*"}
 aws-lambda-powertools =  {extras = ["tracer"],version = "^2.20.0"}

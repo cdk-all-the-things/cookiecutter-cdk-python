@@ -5,8 +5,6 @@ import pytest
 from pydantic import BaseModel
 
 from cdk.{{cookiecutter.service_name}}.constants import CONFIGURATION_NAME, ENVIRONMENT, SERVICE_NAME
-from {{cookiecutter.service_name}}.handlers.utils.dynamic_configuration import parse_configuration
-from {{cookiecutter.service_name}}.models.exceptions import DynamicConfigurationException
 
 MOCKED_SCHEMA = {'region': 'us-east-1'}
 
@@ -28,19 +26,3 @@ def init():
     os.environ['CONFIGURATION_NAME'] = CONFIGURATION_NAME
     os.environ['CONFIGURATION_MAX_AGE_MINUTES'] = '5'
 
-
-def test_invalid_schema(mocker):
-    # Given: Mocked dynamic configuration with an empty schema
-    mock_dynamic_configuration(mocker, {})
-
-    # When and Then: Parsing this configuration with our model, it should raise a DynamicConfigurationException
-    with pytest.raises(DynamicConfigurationException):
-        parse_configuration(model=MockedSchemaModel)
-
-
-def test_valid_schema(mocker):
-    # Given: Mocked dynamic configuration with a valid schema
-    mock_dynamic_configuration(mocker, MOCKED_SCHEMA)
-
-    # When and Then: Parsing this configuration with our model, it should not raise any exception
-    parse_configuration(model=MockedSchemaModel)

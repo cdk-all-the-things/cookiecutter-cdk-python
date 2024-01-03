@@ -12,7 +12,7 @@ setup(
     classifiers=[
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: {{cookiecutter.python_version}}',
     ],
     url='https://github.com/cdk-all-the-things/cookiecutter-cdk-python',
     author='{{cookiecutter.author}}',
@@ -20,6 +20,6 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     package_data={'': ['*.json']},
     include_package_data=True,
-    python_requires='>=3.12',
+    python_requires='>={{cookiecutter.python_version}}',
     install_requires=[],
 )
