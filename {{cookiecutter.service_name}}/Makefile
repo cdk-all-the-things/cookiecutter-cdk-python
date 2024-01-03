@@ -7,7 +7,7 @@ dev:
 	pre-commit install
 # ensures poetry creates a local virtualenv (.venv)
 	poetry config --local virtualenvs.in-project true
-	poetry install
+	poetry install --no-root
 
 format-fix:
 	poetry run isort .
@@ -55,8 +55,8 @@ pr: deps pre-commit complex lint lint-docs unit deploy coverage-tests e2e
 coverage-tests:
 	poetry run pytest tests/unit tests/integration  --cov-config=.coveragerc --cov={{cookiecutter.service_name}} --cov-report xml
 
-deploy: 
-	npx cdk synth --app="${PYTHON} ${PWD}/app.py" --require-approval=never
+synth: 
+	npx cdk synth --app="${PYTHON} ${PWD}/app.py"
 
 deploy: 
 	npx cdk deploy --app="${PYTHON} ${PWD}/app.py" --require-approval=never
