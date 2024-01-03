@@ -1,7 +1,7 @@
-site_name: AWS Lambda Handler CookBook
-site_description: AWS Lambda Handler CookBook
-site_author: Ran Isenberg
-repo_url: https://github.com/cdk-all-the-things/cookiecutter-cdk-python
+site_name: CDK Python Project
+site_description: CDK Python Project
+site_author: Randy Ridgley
+repo_url: {{cookiecutter.git_repo_url}}
 edit_uri: edit/main/docs
 
 nav:
@@ -68,7 +68,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-copyright: Copyright &copy; 2023 Ran Isenberg
+copyright: Copyright &copy; 2024 {{cookiecutter.author}}
 
 plugins:
   - git-revision-date

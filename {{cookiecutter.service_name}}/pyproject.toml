@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "{{cookiecutter.repo_name}}"
+name = "{{cookiecutter.service_name}}"
 version = "1.0.0"
-description = "{{cookiecutter.description}}"
+description = "{{cookiecutter.project_description}}"
 authors = ["{{cookiecutter.author}}"]
 classifiers=[
     "Development Status :: 5 - Production/Stable",
@@ -10,7 +10,7 @@ classifiers=[
     "Natural Language :: English",
     "Programming Language :: Python :: 3.12",
 ]
-repository="https://github.com/replaceme/{{cookiecutter.repo_name}}"
+repository="http://www.github.com/{{cookiecutter.git_repo_url}}"
 readme = "README.md"
 keywords = ["{{cookiecutter.service_name}}"]
 license = "MIT-0"

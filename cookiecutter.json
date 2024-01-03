@@ -1,16 +1,15 @@
 {
     "project_name": "cdk_python_project",
-    "service_slug": "{{ cookiecutter.project_name|lower|replace('-', '_') }}",
-    "service_name": "{{ cookiecutter.project_name|lower|replace('-', '')|replace('a', '')|replace('e', '')|replace('i', '')|replace('o', '')|replace('u', '')}}",
+    "service_name": "{{ cookiecutter.project_name|lower|replace('-', '_') }}",
     "email": "wilford@brimley.com",
     "author": "Wilford Brimley",
-    "description": "Python CDK Application",
+    "project_description": "Python CDK Application",
     "stack_name": "{{ cookiecutter.project_name|replace(' ', '') }}",
     "version": "0.0.1",
     "python_version": "3.10.6",
     "node_version": "18.13.0",
     "cdk_version": "2.117.0",
     "constructs_version": "10.3.0",
-    "git_repo_url": null,
+    "git_repo_url": "cdk-all-the-things/cookiecutter-cdk-python",
     "default_aws_region": "us-east-1"    
 }
