@@ -1,0 +1,19 @@
+{
+  "app": "poetry run python app.py",
+  "watch": {
+    "include": [
+      "service/**",
+      "cdk/service/**"
+    ],
+    "exclude": [
+      "service/**/*.pyc",
+      "service/**/__pycache__",
+      "cdk/**/*.pyc",
+      "cdk/**/__pycache__"
+    ]
+  },
+  "build": "make build",
+  "context": {
+    "default_aws_region": "{{cookiecutter.default_aws_region}}"
+  }
+}
