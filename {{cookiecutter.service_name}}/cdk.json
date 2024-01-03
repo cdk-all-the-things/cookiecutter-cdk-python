@@ -11,8 +11,7 @@
       "cdk/**/*.pyc",
       "cdk/**/__pycache__"
     ]
-  },
-  "build": "make build",
+  },  
   "context": {
     "default_aws_region": "{{cookiecutter.default_aws_region}}"
   }
