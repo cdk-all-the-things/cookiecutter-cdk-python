@@ -16,7 +16,7 @@ keywords = ["{{cookiecutter.service_name}}"]
 license = "MIT-0"
 
 [tool.poetry.dependencies]
-python = "^{{cookiecutter.git_repo_url}}"
+python = "^{{cookiecutter.python_version}}"
 pydantic = {version = "^2.0.3"}
 email-validator = {version = "*"}
 aws-lambda-powertools =  {extras = ["tracer"],version = "^2.20.0"}
