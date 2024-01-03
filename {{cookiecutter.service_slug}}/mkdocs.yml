@@ -1,7 +1,7 @@
 site_name: AWS Lambda Handler CookBook
 site_description: AWS Lambda Handler CookBook
 site_author: Ran Isenberg
-repo_url: https://github.com/ran-isenberg/aws-lambda-handler-cookbook
+repo_url: https://github.com/cdk-all-the-things/cookiecutter-cdk-python
 edit_uri: edit/main/docs
 
 nav:

@@ -72,7 +72,7 @@ jobs:
         run: make dev
       # NOTE: unit tests are connecting to AWS to instantiate boto3 clients/resources
       #       once that's discussed we can move unit and infra tests as part of the fast quality standards
-      #       see https://github.com/ran-isenberg/serverless-python-demo/pull/38#discussion_r1299372169
+      #       see https://github.com/cdk-all-the-things/cookiecutter-cdk-python/pull/38#discussion_r1299372169
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@010d0da01d0b5a38af31e9c3470dbfdabdecca3a # v4.0.1
         with:
