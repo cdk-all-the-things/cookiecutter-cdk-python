@@ -1,5 +1,5 @@
 MONITORING_TOPIC = 'MonitoringTopic'
-SERVICE_NAME = 'Orders'
+SERVICE_NAME = 'service'
 SERVICE_NAME_TAG = 'service'
 OWNER_TAG = 'owner'
 ENVIRONMENT = 'dev'

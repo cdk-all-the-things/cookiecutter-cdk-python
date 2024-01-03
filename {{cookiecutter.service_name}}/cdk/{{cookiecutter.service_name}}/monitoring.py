@@ -6,10 +6,6 @@ from aws_cdk import aws_kms as kms
 from aws_cdk import aws_lambda as _lambda
 from cdk_monitoring_constructs import (
     AlarmFactoryDefaults,
-    CustomMetricGroup,
-    ErrorRateThreshold,
-    LatencyThreshold,
-    MetricStatistic,
     MonitoringFacade,
     SnsAlarmActionStrategy,
 )

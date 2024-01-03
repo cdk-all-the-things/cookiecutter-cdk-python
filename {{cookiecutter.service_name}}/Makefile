@@ -1,4 +1,4 @@
-.PHONY: dev lint complex coverage pre-commit sort deploy destroy deps unit infra-tests integration e2e coverage-tests docs lint-docs build format
+.PHONY: dev lint complex coverage pre-commit sort deploy destroy deps unit infra-tests integration e2e coverage-tests docs lint-docs format
 PYTHON := ".venv/bin/python3"
 
 .ONESHELL:  # run all commands in a single shell, ensuring it runs within a local virtual env
@@ -8,7 +8,6 @@ dev:
 # ensures poetry creates a local virtualenv (.venv)
 	poetry config --local virtualenvs.in-project true
 	poetry install
-	npm ci
 
 format-fix:
 	poetry run isort .
@@ -42,10 +41,7 @@ deps:
 unit:
 	poetry run pytest tests/unit  --cov-config=.coveragerc --cov={{cookiecutter.service_name}} --cov-report xml
 
-build: deps
-	mkdir -p .build/common_layer ; poetry export --without=dev --format=requirements.txt > .build/common_layer/requirements.txt
-
-infra-tests: build
+infra-tests:
 	poetry run pytest tests/infrastructure
 
 integration:
@@ -59,7 +55,10 @@ pr: deps pre-commit complex lint lint-docs unit deploy coverage-tests e2e
 coverage-tests:
 	poetry run pytest tests/unit tests/integration  --cov-config=.coveragerc --cov={{cookiecutter.service_name}} --cov-report xml
 
-deploy: build
+deploy: 
+	npx cdk synth --app="${PYTHON} ${PWD}/app.py" --require-approval=never
+
+deploy: 
 	npx cdk deploy --app="${PYTHON} ${PWD}/app.py" --require-approval=never
 
 destroy:

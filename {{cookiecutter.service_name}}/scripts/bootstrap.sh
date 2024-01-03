@@ -36,3 +36,5 @@ git remote add origin "http://www.github.com/{{cookiecutter.git_repo_url}}"
 echo "⭐ Initial Commit using Commitizen"
 git add -A
 git commit -m "build: initial commit"
+
+make dev
