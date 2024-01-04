@@ -12,6 +12,7 @@
     "constructs_version": "10.3.0",
     "git_repo_url": "cdk-all-the-things/cookiecutter-cdk-python",
     "default_aws_region": "us-east-1",
+    "license": ["MIT", "BSD", "ISC", "Apache 2.0", "GNU General Public v3"],
     "_copy_without_render": [
         "*.html",
         ".github"

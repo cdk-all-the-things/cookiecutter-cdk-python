@@ -55,6 +55,7 @@ types-cachetools = "*"
 mypy = "*"
 types-requests = "*"
 toml = "*"
+cyclonedx-python-lib = "^6.2.0"
 
 [tool.isort]
 py_version = 312
