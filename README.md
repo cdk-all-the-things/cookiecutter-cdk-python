@@ -208,6 +208,79 @@ The primary libraries used are described in sections as follows:
 |[mkdocstrings]|Automatic documentation|
 |[mkdocstrings-python]|Automatic documentation|
 
+## Project structure
+
+The directory structure of the project looks like this:
+
+```txt
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── Makefile_windows
+├── README.md
+├── SECURITY.md
+├── app.py
+├── cdk
+│   ├── __init__.py
+│   ├── setup.py
+│   └── {{cookiecutter.service_name}}
+│       ├── __init__.py
+│       ├── configuration
+│       │   ├── __init__.py
+│       │   ├── configuration_construct.py
+│       │   ├── json
+│       │   │   └── dev_configuration.json
+│       │   └── schema.py
+│       ├── constants.py
+│       ├── monitoring.py
+│       ├── service_stack.py
+│       └── utils.py
+├── cdk.context.json
+├── cdk.json
+├── docs
+│   ├── images
+│   │   ├── cicd_main.png
+│   │   ├── cicd_pr.png
+│   │   ├── design.png
+│   │   ├── monitoring
+│   │   │   ├── alarm_5xx.png
+│   │   │   ├── alarm_p90.png
+│   │   │   ├── dynamo.png
+│   │   │   ├── eb.png
+│   │   │   ├── high_level.png
+│   │   │   ├── low_level.png
+│   │   │   └── stream_low_level.png
+│   │   ├── monitoring.png
+│   │   └── tests.png
+│   ├── index.md
+│   ├── monitoring.md
+│   ├── opensource.md
+│   └── pipeline.md
+├── mkdocs.yml
+├── mypy.ini
+├── package.json
+├── poetry.toml
+├── pyproject.toml
+├── scripts
+│   └── bootstrap.sh
+└── tests
+    ├── __init__.py
+    ├── e2e
+    │   ├── __init__.py
+    │   └── test.py
+    ├── infrastructure
+    │   ├── __init__.py
+    │   └── test_cdk.py
+    ├── integration
+    │   ├── __init__.py
+    │   └── test_feature_flags.py
+    ├── unit
+    │   ├── __init__.py
+    │   └── test_parse_configuration.py
+    └── utils.py
+```
+
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [Hypermodern Python cookiecutter]: https://cookiecutter-hypermodern-python.readthedocs.io/en/2020.6.15/index.html
 [real python]: https://realpython.com/python-project-documentation-with-mkdocs/
