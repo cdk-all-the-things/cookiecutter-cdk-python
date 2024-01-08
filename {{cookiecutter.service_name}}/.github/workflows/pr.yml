@@ -16,7 +16,6 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - "product/**" # source code
       - "cdk/**" # CDK source code
       - "tests/**"
       - "pyproject.toml" # deps
