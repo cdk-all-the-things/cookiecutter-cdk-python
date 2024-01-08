@@ -8,14 +8,20 @@ repos:
       # - id: detect-aws-credentials
       - id: check-yaml
       - id: check-json
+      - id: check-toml
       - id: check-merge-conflict
       - id: check-case-conflict
       - id: check-added-large-files
       - id: check-executables-have-shebangs
-      - id: check-docstring-first      
+      - id: check-docstring-first
       - id: detect-private-key
       - id: pretty-format-json
+        args: [ '--autofix', '--no-ensure-ascii', '--no-sort-keys' ]
       - id: debug-statements
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v3.12.0
+    hooks:
+      - id: reorder-python-imports
   - repo: https://github.com/ambv/black
     rev: "23.12.0"
     hooks:
@@ -27,6 +33,10 @@ repos:
         args:
           # https://flake8.pycqa.org/en/latest/user/error-codes.html
           - "--ignore=E501,W503,E203,E712"
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.11
+    hooks:
+      - id: ruff          
   - repo: https://github.com/pycqa/isort
     rev: 5.13.0
     hooks:
