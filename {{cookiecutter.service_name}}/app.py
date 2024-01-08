@@ -19,7 +19,7 @@ pipeline = GitHubWorkflow(
         'Build',
         commands=[
             'yarn install',
-            'yarn build',
+            'make dev',
         ],
     ),
     aws_creds=AwsCredentials.from_open_id_connect(

@@ -8,6 +8,7 @@ dev:
 # ensures poetry creates a local virtualenv (.venv)
 	poetry config --local virtualenvs.in-project true
 	poetry install --no-root
+	make synth
 
 format-fix:
 	poetry run isort .
