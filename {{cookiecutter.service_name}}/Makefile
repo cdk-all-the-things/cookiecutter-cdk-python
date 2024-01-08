@@ -8,7 +8,7 @@ dev:
 # ensures poetry creates a local virtualenv (.venv)
 	poetry config --local virtualenvs.in-project true
 	poetry install --no-root
-	make synth
+	npx cdk synth --app="${PYTHON} ${PWD}/app.py"
 
 format-fix:
 	poetry run isort .
