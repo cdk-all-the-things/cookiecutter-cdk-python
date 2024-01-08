@@ -1,27 +1,19 @@
 #!/usr/bin/env python3
 import os
-import cdk_nag
 import aws_cdk.pipelines
 
-from aws_cdk import App, Aspects, Environment
+from aws_cdk import App
 from boto3 import client, session
-from cdk_pipelines_github import AwsCredentials
-from cdk.{{cookiecutter.service_name}}.stacks.service_stack import ServiceStack
-from cdk.{{cookiecutter.service_name}}.utils import get_stack_name
+from cdk_pipelines_github import AwsCredentials, GitHubWorkflow
+
+from cdk.{{cookiecutter.service_name}}.pipeline.service_stage import ServiceStage
 
 account = client('sts').get_caller_identity()['Account']
 region = session.Session().region_name
 environment = os.getenv('ENVIRONMENT', 'dev')
 app = App()
 
-my_stack = ServiceStack(
-    scope=app,
-    id=get_stack_name(),
-    env=Environment(account=os.environ.get('AWS_DEFAULT_ACCOUNT', account), region=os.environ.get('AWS_DEFAULT_REGION', region)),
-    is_production_env=True if environment == 'production' else False,
-)
-
-pipeline = cdk_pipelines_github.GitHubWorkflow(
+pipeline = GitHubWorkflow(
     app, 'Pipeline',
     synth=aws_cdk.pipelines.ShellStep(
         'Build',
@@ -35,8 +27,12 @@ pipeline = cdk_pipelines_github.GitHubWorkflow(
     ),
 )
 
-pipeline.add_stage(my_stack)
+dev_stage = ServiceStage(
+    scope=app,
+    id='dev-service-stage'
+)
 
-# Runs CDK Nag on Stack
-Aspects.of(my_stack).add(cdk_nag.AwsSolutionsChecks())
+devWave = pipeline.add_wave('Development')
+devWave.add_stage(dev_stage)
+
 app.synth()
