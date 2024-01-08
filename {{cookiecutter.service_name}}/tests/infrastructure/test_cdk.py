@@ -1,7 +1,7 @@
 from aws_cdk import App
 from aws_cdk.assertions import Template
 
-from cdk.{{cookiecutter.service_name}}.service_stack import ServiceStack
+from cdk.{{cookiecutter.service_name}}.stacks.service_stack import ServiceStack
 
 
 def test_synthesizes_properly():
