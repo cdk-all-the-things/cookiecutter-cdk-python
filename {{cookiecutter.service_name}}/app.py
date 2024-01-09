@@ -2,15 +2,14 @@
 import os
 import aws_cdk.pipelines
 
-from aws_cdk import App
-from boto3 import client, session
+from aws_cdk import App, Aws
 from cdk_pipelines_github import AwsCredentials, GitHubWorkflow
 
 from cdk.{{cookiecutter.service_name}}.pipeline.service_stage import ServiceStage
 from cdk.{{cookiecutter.service_name}}.pipeline.setup_stage import SetupStage
 
-account = client('sts').get_caller_identity()['Account']
-region = session.Session().region_name
+account = Aws.ACCOUNT_ID
+region = Aws.REGION
 environment = os.getenv('ENVIRONMENT', 'dev')
 app = App()
 
