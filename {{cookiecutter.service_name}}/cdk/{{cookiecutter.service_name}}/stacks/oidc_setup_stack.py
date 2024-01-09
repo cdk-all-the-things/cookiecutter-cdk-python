@@ -3,7 +3,8 @@ from aws_cdk import (
     aws_iam as iam,
 )
 from constructs import Construct
-
+from cdk_pipelines_github import GitHubActionRole
+from cdk_nag import NagSuppressions
 
 class OIDCSetup(Stack):
 
@@ -17,11 +18,21 @@ class OIDCSetup(Stack):
             client_ids=["sts.amazonaws.com"]
         )
         
-        deploy_role = iam.GitHubActionRole(
+        deploy_role = GitHubActionRole(
             self, 
             "github-action-role",
-            repos=["{{cookiecutter.git_repo_url}}"],
+            repos=["cdk-all-the-things/cdk-python-pipeline"],
             provider=github_provider
         )
         
         self.export_value(deploy_role.role.role_arn)
+
+        NagSuppressions.add_stack_suppressions(
+            self,
+            [
+                {
+                    'id': 'AwsSolutions-IAM5',
+                    'reason': 'policy for cloudwatch logs.'
+                },
+            ],
+        )
