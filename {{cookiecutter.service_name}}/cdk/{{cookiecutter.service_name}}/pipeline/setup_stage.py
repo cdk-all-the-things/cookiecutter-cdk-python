@@ -12,13 +12,11 @@ class SetupStage(Stage):
 
         account = client('sts').get_caller_identity()['Account']
         region = session.Session().region_name
-        environment = os.getenv('ENVIRONMENT', 'dev')
 
         service_stack = OIDCSetup(
             self,
             id=get_stack_name(),
-            env=Environment(account=os.environ.get('AWS_DEFAULT_ACCOUNT', account), region=os.environ.get('AWS_DEFAULT_REGION', region)),
-            is_production_env=True if environment == 'production' else False,
+            env=Environment(account=os.environ.get('AWS_DEFAULT_ACCOUNT', account), region=os.environ.get('AWS_DEFAULT_REGION', region))
         )
 
         # Runs CDK Nag on Stack
