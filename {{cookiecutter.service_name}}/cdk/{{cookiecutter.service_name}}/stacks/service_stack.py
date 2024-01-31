@@ -2,9 +2,8 @@ from aws_cdk import Aspects, Stack, Tags
 from cdk_nag import AwsSolutionsChecks, NagSuppressions
 from constructs import Construct
 
-from cdk.{{cookiecutter.service_name}}.configuration.configuration_construct import ConfigurationStore
-from cdk.{{cookiecutter.service_name}}.constants import CONFIGURATION_NAME, ENVIRONMENT, OWNER_TAG, SERVICE_NAME, SERVICE_NAME_TAG
-from cdk.{{cookiecutter.service_name}}.utils import get_construct_name, get_username
+from cdk.{{cookiecutter.service_name}}.constants import OWNER_TAG, SERVICE_NAME, SERVICE_NAME_TAG
+from cdk.{{cookiecutter.service_name}}.utils import get_username
 
 
 class ServiceStack(Stack):
@@ -13,16 +12,7 @@ class ServiceStack(Stack):
         super().__init__(scope, id, **kwargs)
         self._add_stack_tags()
 
-        # This construct should be deployed in a different repo and have its own pipeline so updates can be decoupled
-        # from running the service pipeline and without redeploying the service lambdas. For the sake of this template
-        # example, it is deployed as part of the service stack
-        self.dynamic_configuration = ConfigurationStore(
-            self,
-            get_construct_name(stack_prefix=id, construct_name='DynamicConf'),
-            ENVIRONMENT,
-            SERVICE_NAME,
-            CONFIGURATION_NAME,
-        )
+        # Your Resources go here....
 
         # add security check
         self._add_security_tests()
