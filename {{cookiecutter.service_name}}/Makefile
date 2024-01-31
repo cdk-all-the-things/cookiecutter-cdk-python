@@ -57,13 +57,13 @@ coverage-tests:
 	poetry run pytest tests/unit tests/integration  --cov-config=.coveragerc --cov={{cookiecutter.service_name}} --cov-report xml
 
 synth: 
-	npx cdk synth --app="${PYTHON} ${PWD}/app.py"
+	poetry cdk synth --app="${PYTHON} ${PWD}/app.py"
 
 deploy: 
-	npx cdk deploy --app="${PYTHON} ${PWD}/app.py" --require-approval=never
+	poetry cdk deploy --app="${PYTHON} ${PWD}/app.py" --require-approval=never
 
 destroy:
-	npx cdk destroy --app="${PYTHON} ${PWD}/app.py" --force
+	poetry cdk destroy --app="${PYTHON} ${PWD}/app.py" --force
 
 docs:
 	poetry run mkdocs serve
